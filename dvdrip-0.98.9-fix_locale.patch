@@ -1,0 +1,39 @@
+diff -up dvdrip-0.98.9/l10n/Makefile.fix_locale dvdrip-0.98.9/l10n/Makefile
+--- dvdrip-0.98.9/l10n/Makefile.fix_locale	2008-12-09 18:44:23.000000000 +0100
++++ dvdrip-0.98.9/l10n/Makefile	2008-12-09 18:45:17.000000000 +0100
+@@ -64,6 +64,8 @@ install: $(MO_FILES)
+ 		cp -f $$cat $$dest && chmod 644 $$dest || exit 1; \
+ 	done
+ 	touch .mo.installed
++
++gensplash:
+ 	cd ..; \
+ 	tools/gensplash
+ 
+diff -up dvdrip-0.98.9/l10n/POTFILES.in.fix_locale dvdrip-0.98.9/l10n/POTFILES.in
+--- dvdrip-0.98.9/l10n/POTFILES.in.fix_locale	2006-07-02 22:27:04.000000000 +0200
++++ dvdrip-0.98.9/l10n/POTFILES.in	2008-12-09 18:41:53.000000000 +0100
+@@ -67,14 +67,3 @@
+ ../lib/Video/DVDRip/Term/Progress.pm
+ ../lib/Video/DVDRip/Content.pm
+ ../lib/Video/DVDRip.pm
+-/home/joern/projects/Event-ExecFlow/bin/execflow
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Callbacks.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Frontend.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Frontend/Term.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Job/Code.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Job/Command.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Job/Group.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Job.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Scheduler.pm
+-/home/joern/projects/Event-ExecFlow/lib/Event/ExecFlow/Scheduler/SimpleMax.pm
+diff -up dvdrip-0.98.9/tools/gensplash.fix_locale dvdrip-0.98.9/tools/gensplash
+--- dvdrip-0.98.9/tools/gensplash.fix_locale	2006-09-09 13:07:31.000000000 +0200
++++ dvdrip-0.98.9/tools/gensplash	2008-12-09 18:41:53.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ 
+ use strict;
+ use lib "lib";
