@@ -1,0 +1,13 @@
+diff -up dvdrip-0.98.8/lib/Video/DVDRip/Config.pm.defaultconfig dvdrip-0.98.8/lib/Video/DVDRip/Config.pm
+--- dvdrip-0.98.8/lib/Video/DVDRip/Config.pm.defaultconfig	2008-05-08 15:07:30.000000000 +0200
++++ dvdrip-0.98.8/lib/Video/DVDRip/Config.pm	2008-05-08 15:09:57.000000000 +0200
+@@ -252,7 +252,7 @@ my %CONFIG_PARAMETER = (
+     ogg_file_ext => {
+         label => __ "OGG file extension",
+         type  => 'string',
+-        value => 'ogm',
++        value => 'ogg',
+         presets => [ 'ogg', 'ogm', ],
+     },
+     cluster_master_local => {
+

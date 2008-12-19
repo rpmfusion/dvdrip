@@ -1,0 +1,11 @@
+diff -up dvdrip-0.98.9/lib/Video/DVDRip/Config.pm~ dvdrip-0.98.9/lib/Video/DVDRip/Config.pm
+--- dvdrip-0.98.9/lib/Video/DVDRip/Config.pm~	2008-12-10 12:07:47.000000000 +0100
++++ dvdrip-0.98.9/lib/Video/DVDRip/Config.pm	2008-12-10 12:08:23.000000000 +0100
+@@ -10,6 +10,7 @@
+ 
+ package Video::DVDRip::Config;
+ use Locale::TextDomain qw (video.dvdrip);
++use POSIX qw(locale_h);
+ 
+ use base Video::DVDRip::Base;
+ 
