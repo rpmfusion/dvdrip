@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.9
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -27,6 +27,8 @@ Requires: ImageMagick
 #Needed for transcoding
 Requires: transcode >= 0.6.13
 Requires: %{name}-master = %{version}-%{release}
+Requires: perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+
 #Optionals
 # subtitleripper, vcdimager, lsdvd, xvid4conf
 # ogmtools is deprecated since ogm/ogg container (for video) is broken
@@ -43,6 +45,7 @@ transcode and many other Open Source tools.
 Summary:        Master node controler for %{name}
 Group:          Applications/Multimedia
 Requires:       fping
+Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description    master
 The %{name}-master package contains the master node controler for %{name}.
@@ -145,6 +148,8 @@ fi
 %doc %docfiles lib/Video/DVDRip/license.txt
 %exclude %{_bindir}/%{name}-master
 %{_bindir}/%{name}*
+%dir %{perl_vendorlib}/Video
+%dir %{perl_vendorlib}/Video/DVDRip
 %{perl_vendorlib}/Video/DVDRip/GUI
 %{_datadir}/applications/*%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -154,12 +159,16 @@ fi
 %files master -f video.dvdrip.lang
 %defattr(-,root,root,-)
 %{_bindir}/%{name}-master
+%dir %{perl_vendorlib}/Video
+%dir %{perl_vendorlib}/Video/DVDRip
 %exclude %{perl_vendorlib}/Video/DVDRip/GUI
 %{perl_vendorlib}/Video/DVDRip/
 %{perl_vendorlib}/Video/DVDRip.pm
 
 
 %changelog
+* Mon Feb  2 2009 kwizart < kwizart at gmail.com > - 0.98.9-7
+- Fix directory ownership (rpmfusion #354)
 * Fri Dec 12 2008 kwizart < kwizart at gmail.com > - 0.98.9-6
 - Split dvdrip-master
 * Wed Dec 10 2008 kwizart < kwizart at gmail.com > - 0.98.9-5
