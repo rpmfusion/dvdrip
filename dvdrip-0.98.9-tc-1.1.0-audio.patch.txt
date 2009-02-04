@@ -1,0 +1,17 @@
+Index: lib/Video/DVDRip/Title.pm
+===================================================================
+RCS file: /home/cvsroot/dvdrip/lib/Video/DVDRip/Title.pm,v
+retrieving revision 1.180.2.6
+diff -u -r1.180.2.6 Title.pm
+--- lib/Video/DVDRip/Title.pm	1 Oct 2008 10:03:12 -0000	1.180.2.6
++++ lib/Video/DVDRip/Title.pm	3 Feb 2009 21:51:28 -0000
+@@ -2708,7 +2714,7 @@
+     my $command = "mkdir -p $dir && "
+         . "execflow -n $tc_nice transcode "
+         . " -H 10"
+-        . " -g 0x0 -u 50"
++        . " -u 50"
+         . " -a $vob_nr"
+         . " -y raw";
+ 
+

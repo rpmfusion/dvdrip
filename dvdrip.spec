@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.9
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -12,6 +12,7 @@ Patch2:         dvdrip-0.98.9-fping_path.patch
 Patch3:         dvdrip-0.98.9-fix_locale.patch
 Patch4:         dvdrip-0.98.9-test_Locale.patch
 Patch5:         dvdrip-0.98.9-rm-GUI_Pipe.patch
+Patch6:         dvdrip-0.98.9-tc-1.1.0-audio.patch.txt
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: perl(ExtUtils::MakeMaker)
@@ -60,6 +61,8 @@ The %{name}-master package contains the master node controler for %{name}.
 %patch3 -p1 -b .fix_locale
 %patch4 -p1 -b .test_locale
 %patch5 -p1 -b .rm-GUI_Pipe
+%patch6 -p0 -b .tc110
+
 
 #Remove pre-built mo
 find lib/LocaleData -name "*.mo" -exec rm -f {} ';'
@@ -167,6 +170,8 @@ fi
 
 
 %changelog
+* Wed Feb  4 2009 kwizart < kwizart at gmail.com > - 0.98.9-8
+- Backport a patch for transcode110
 * Mon Feb  2 2009 kwizart < kwizart at gmail.com > - 0.98.9-7
 - Fix directory ownership (rpmfusion #354)
 * Fri Dec 12 2008 kwizart < kwizart at gmail.com > - 0.98.9-6
