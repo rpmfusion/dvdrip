@@ -1,18 +1,14 @@
 Name:           dvdrip
-Version:        0.98.9
-Release:        8%{?dist}
+Version:        0.98.10
+Release:        1%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
 License:        (GPL+ or Artistic) and CC-BY-SA
 URL:            http://www.exit1.org/dvdrip/
 Source0:        http://www.exit1.org/dvdrip/dist/dvdrip-%{version}.tar.gz
-Patch1:         dvdrip-0.98.8-default_config.patch
-Patch2:         dvdrip-0.98.9-fping_path.patch
 Patch3:         dvdrip-0.98.9-fix_locale.patch
-Patch4:         dvdrip-0.98.9-test_Locale.patch
 Patch5:         dvdrip-0.98.9-rm-GUI_Pipe.patch
-Patch6:         dvdrip-0.98.9-tc-1.1.0-audio.patch.txt
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: perl(ExtUtils::MakeMaker)
@@ -54,15 +50,8 @@ The %{name}-master package contains the master node controler for %{name}.
 
 %prep
 %setup -q
-#%%patch0 -p1 -b .nontplworkaround
-# OGM container is deprecated and shound't be used anymore
-%patch1 -p1 -b .defaultconfig
-%patch2 -p1 -b .path
 %patch3 -p1 -b .fix_locale
-%patch4 -p1 -b .test_locale
 %patch5 -p1 -b .rm-GUI_Pipe
-%patch6 -p0 -b .tc110
-
 
 #Remove pre-built mo
 find lib/LocaleData -name "*.mo" -exec rm -f {} ';'
@@ -170,6 +159,9 @@ fi
 
 
 %changelog
+* Mon Feb 23 2009 kwizart < kwizart at gmail.com > - 0.98.10-1
+- Update to 0.98.10 -  Some of our patches got merged upstream.
+  http://www.exit1.org/dvdrip/changes.cipp?version=0.98.10
 * Wed Feb  4 2009 kwizart < kwizart at gmail.com > - 0.98.9-8
 - Backport a patch for transcode110
 * Mon Feb  2 2009 kwizart < kwizart at gmail.com > - 0.98.9-7
