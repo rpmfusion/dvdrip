@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -159,6 +159,9 @@ fi
 
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.98.10-2
+- rebuild for new F11 features
+
 * Mon Feb 23 2009 kwizart < kwizart at gmail.com > - 0.98.10-1
 - Update to 0.98.10 -  Some of our patches got merged upstream.
   http://www.exit1.org/dvdrip/changes.cipp?version=0.98.10
