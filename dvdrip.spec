@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.10
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -102,6 +102,7 @@ chmod -R u+w $RPM_BUILD_ROOT/*
 desktop-file-install --vendor "" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications \
   --mode 644 \
+  --add-category="X-AudioVideoImport" \
   %{name}.desktop
 
 #Install icon
@@ -159,6 +160,9 @@ fi
 
 
 %changelog
+* Fri Oct 23 2009 Orcan Ogetbil <oged[DOT]fedora[AT]gmail[DOT]com> - 0.98.10-3
+- Update desktop file according to F-12 FedoraStudio feature
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.98.10-2
 - rebuild for new F11 features
 
