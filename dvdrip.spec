@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.10
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -143,6 +143,7 @@ fi
 %{_bindir}/%{name}*
 %dir %{perl_vendorlib}/Video
 %dir %{perl_vendorlib}/Video/DVDRip
+%{perl_vendorlib}/Video/DVDRip/Main.pm.rm-GUI_Pipe
 %{perl_vendorlib}/Video/DVDRip/GUI
 %{_datadir}/applications/*%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -155,11 +156,15 @@ fi
 %dir %{perl_vendorlib}/Video
 %dir %{perl_vendorlib}/Video/DVDRip
 %exclude %{perl_vendorlib}/Video/DVDRip/GUI
+%exclude %{perl_vendorlib}/Video/DVDRip/Main.pm.rm-GUI_Pipe
 %{perl_vendorlib}/Video/DVDRip/
 %{perl_vendorlib}/Video/DVDRip.pm
 
 
 %changelog
+* Wed Dec 30 2009 Nicolas Chauvet <kwizart@fedoraproject.org> - 0.98.10-4
+- Rebuild for perl
+
 * Fri Oct 23 2009 Orcan Ogetbil <oged[DOT]fedora[AT]gmail[DOT]com> - 0.98.10-3
 - Update desktop file according to F-12 FedoraStudio feature
 
