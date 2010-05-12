@@ -1,6 +1,6 @@
 Name:           dvdrip
-Version:        0.98.10
-Release:        4%{?dist}
+Version:        0.98.11
+Release:        1%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -15,7 +15,7 @@ BuildRequires: perl(ExtUtils::MakeMaker)
 BuildRequires: perl(Gtk2) >= 1.121
 BuildRequires: perl(Gtk2::Ex::FormFactory) >= 0.65
 BuildRequires: perl(Locale::TextDomain) >= 1.16
-BuildRequires: perl(Event::ExecFlow) >= 0.62
+BuildRequires: perl(Event::ExecFlow) >= 0.64
 BuildRequires: perl(Event::RPC) >= 0.89
 BuildRequires: perl(AnyEvent) >= 1.02
 BuildRequires: desktop-file-utils
@@ -39,24 +39,19 @@ transcoding process. It uses the widely known video processing swissknife
 transcode and many other Open Source tools.
 
 %package        master
-Summary:        Master node controler for %{name}
+Summary:        Master node controller for %{name}
 Group:          Applications/Multimedia
 Requires:       fping
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 %description    master
-The %{name}-master package contains the master node controler for %{name}.
+The %{name}-master package contains the master node controller for %{name}.
 
 
 %prep
 %setup -q
 %patch3 -p1 -b .fix_locale
 %patch5 -p1
-
-#Remove pre-built mo
-find lib/LocaleData -name "*.mo" -exec rm -f {} ';'
-
-#Fix the part that need an X screen at l10n regeneration.
 
 # Fix encoding issues:
 %define docfiles Changes Changes.0.46 COPYRIGHT Credits README TODO lib/Video/DVDRip/translators.txt
@@ -74,12 +69,6 @@ chmod -x lib/Video/DVDRip/Cluster/Webserver.pm
 rm -fr perl-modules
 
 %build
-#We make the LocaleData
-pushd l10n
-  make all
-popd
-#Compilation sometime fails with parallele make
-
 # We first build dvdrip-progress.c dvdrip-splitpipe.c with our flags
 # The compilation won't be done twince as the binaries are already here.
 # Note that only theses two make the package arch dependant (not the perl side).
@@ -123,18 +112,17 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %post
-# update icon themes
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x /usr/bin/gtk-update-icon-cache ]; then
-  /usr/bin/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi 
+touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 
 %postun
-# update icon themes
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x /usr/bin/gtk-update-icon-cache ]; then
-  /usr/bin/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+if [ $1 -eq 0 ] ; then
+    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 fi
+
+%posttrans
+gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+
 
 %files
 %defattr(-,root,root,-)
@@ -160,6 +148,11 @@ fi
 
 
 %changelog
+* Tue May 11 2010 Orcan Ogetbil <oged[DOT]fedora[AT]gmail[DOT]com> - 0.98.11-1
+- Update to 0.98.11
+- No need to rebuild locale data as this is no longer required in the guidelines
+- Update the post* scriptlets
+
 * Wed Dec 30 2009 Nicolas Chauvet <kwizart@fedoraproject.org> - 0.98.10-4
 - Rebuild for perl
 - Do not produce weird file because of the patch command.
