@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -148,6 +148,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Tue Aug 24 2010 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-2
+- rebuilt for new perl
+
 * Tue May 11 2010 Orcan Ogetbil <oged[DOT]fedora[AT]gmail[DOT]com> - 0.98.11-1
 - Update to 0.98.11
 - No need to rebuild locale data as this is no longer required in the guidelines
