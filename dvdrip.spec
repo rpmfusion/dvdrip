@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.11
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -148,6 +148,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Tue Sep 27 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-3
+- Rebuilt for perl
+
 * Tue Aug 24 2010 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-2
 - rebuilt for new perl
 
