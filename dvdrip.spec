@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.11
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -34,7 +34,7 @@ Requires: perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
 #Filtering
 %{?filter_setup:
-%filter_from_provides /perl(Video::DVDRip::Task)/d
+%filter_from_requires /perl(Video::DVDRip::Task)/d
 %filter_setup
 }
 
@@ -155,7 +155,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
-* Mon Oct 03 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-4
+* Mon Oct 03 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-5
 - Filter perl(Video::DVDRip::Task)
 
 * Tue Sep 27 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-3
