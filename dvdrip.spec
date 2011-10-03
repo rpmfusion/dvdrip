@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.11
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -31,6 +31,13 @@ Requires: perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 # ogmtools is deprecated since ogm/ogg container (for video) is broken
 # according to ffmpeg/MPlayer developers
 # -master Requires: fping
+
+#Filtering
+%{?filter_setup:
+%filter_from_provides /perl(Video::DVDRip::Task)/d
+%filter_setup
+}
+
 
 %description
 dvd::rip is a full featured DVD copy program. It provides an easy to use but
@@ -148,6 +155,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Mon Oct 03 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-4
+- Filter perl(Video::DVDRip::Task)
+
 * Tue Sep 27 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-3
 - Rebuilt for perl
 
