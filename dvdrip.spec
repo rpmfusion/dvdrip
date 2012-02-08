@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.11
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -155,6 +155,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Wed Feb 08 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Mon Oct 03 2011 Nicolas Chauvet <kwizart@gmail.com> - 0.98.11-5
 - Filter perl(Video::DVDRip::Task)
 
