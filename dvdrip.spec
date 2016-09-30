@@ -1,6 +1,6 @@
 Name:           dvdrip
 Version:        0.98.11
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Graphical DVD ripping and encoding tool
 
 Group:          Applications/Multimedia
@@ -11,6 +11,7 @@ Patch3:         dvdrip-0.98.9-fix_locale.patch
 Patch5:         dvdrip-0.98.9-rm-GUI_Pipe.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+BuildRequires: perl-generators
 BuildRequires: perl(ExtUtils::MakeMaker)
 BuildRequires: perl(Gtk2) >= 1.121
 BuildRequires: perl(Gtk2::Ex::FormFactory) >= 0.65
@@ -155,6 +156,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Fri Sep 30 2016 Sérgio Basto <sergio@serjux.com> - 0.98.11-12
+- Add perl-generators to get proper requires/provides on F-25 and later
+
 * Fri Sep 30 2016 Sérgio Basto <sergio@serjux.com> - 0.98.11-11
 - Rebuild for Perl with locale
 
